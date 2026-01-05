@@ -57,7 +57,7 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://play.google.com/store/apps/details?id=com.angel.guardian_angel" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary-dark transition-colors"

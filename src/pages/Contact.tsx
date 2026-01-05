@@ -131,7 +131,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                     <span>YouTube</span>
                   </a>
                   <a 
-                    href="#" 
+                    href="https://play.google.com/store/apps/details?id=com.angel.guardian_angel" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 text-primary hover:text-primary-dark transition-colors"

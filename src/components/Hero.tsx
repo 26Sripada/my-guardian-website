@@ -1,5 +1,7 @@
 import { Shield, Smartphone, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBanner from "@/assets/hero-banner.jpg";
+
 
 const Hero = () => {
   return (
@@ -7,7 +9,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="\src\assets\hero-banner.jpg"
+          src={heroBanner}
           alt="My Guardian Hero"
           className="w-full h-full object-cover"
         />

@@ -17,41 +17,82 @@ const hoverPump = {
   }
 };
 
-
 const Index = () => {
   const features = [
     {
       icon: Shield,
       title: "Emergency SOS",
-      description: "Double-tap emergency alerts with real-time location sharing to keep you and your loved ones safe."
+      description:
+        "Instant SOS alerts with real-time location sharing to ensure quick help during emergencies."
     },
     {
       icon: Users,
       title: "Civic Engagement",
-      description: "Complaint Submission system for civic issues, supporting Swachh Bharat and community development."
+      description:
+        "Report civic issues like garbage, roads, water supply, and contribute to Swachh Bharat."
     },
     {
       icon: Smartphone,
       title: "Local Commerce",
-      description: "Discover and support local businesses, kirana stores, and service providers in your neighborhood."
+      description:
+        "Discover nearby businesses, kirana stores, medical services, and trusted local providers."
     },
     {
       icon: Building,
       title: "Smart Cities",
-      description: "Contributing to India's Smart Cities vision with integrated digital governance solutions."
+      description:
+        "Supporting India’s Smart Cities and Digital India initiatives through citizen participation."
     }
   ];
 
   const stats = [
-    { icon: Heart, number: "1B+", label: "Lives to Impact" },
-    { icon: Building, number: "100+", label: "Cities to Cover" },
+    { icon: Heart, number: "1B+", label: "Citizens to Empower" },
+    { icon: Building, number: "100+", label: "Cities Vision" },
     { icon: Users, number: "1M+", label: "Local Businesses" },
-    { icon: TrendingUp, number: "24/7", label: "Emergency Support" }
+    { icon: TrendingUp, number: "24/7", label: "Safety Support" }
   ];
 
   return (
     <div className="min-h-screen bg-background">
+      {/* ---------------- Hero ---------------- */}
       <Hero />
+
+      {/* ---------------- SEO / AdSense Content Section ---------------- */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <h1 className="text-3xl font-bold mb-6 text-foreground">
+            My Guardian – A Citizen Safety & Civic Engagement Platform for India
+          </h1>
+
+          <p className="text-muted-foreground mb-4">
+            My Guardian is a Made-in-India digital platform built to empower citizens by
+            providing emergency safety tools, civic issue reporting, and access to local
+            services in one unified ecosystem. The platform focuses on citizen safety,
+            accountability, and community participation using modern digital technologies.
+          </p>
+
+          <p className="text-muted-foreground mb-4">
+            As cities expand and daily life becomes more complex, citizens often face
+            challenges such as delayed emergency response, unresolved civic complaints,
+            lack of visibility into nearby services, and limited digital coordination.
+            My Guardian addresses these problems by acting as a reliable digital companion
+            for individuals, families, and communities.
+          </p>
+
+          <p className="text-muted-foreground mb-4">
+            The platform actively supports national initiatives such as Swachh Bharat,
+            Digital India, and the Smart Cities Mission by encouraging responsible civic
+            participation. Citizens can report issues, stay informed, and engage with
+            their surroundings in a meaningful and impactful way.
+          </p>
+
+          <p className="text-muted-foreground">
+            Whether it is an emergency situation, a public infrastructure concern, or
+            discovering trusted local services, My Guardian helps bridge the gap between
+            people, technology, and governance to build a safer and smarter India.
+          </p>
+        </div>
+      </section>
 
       {/* ---------------- Features Section ---------------- */}
       <section className="py-16">
@@ -68,8 +109,8 @@ const Index = () => {
               Empowering Every Citizen
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              My Guardian combines cutting-edge technology with citizen-first design to create
-              a comprehensive safety and civic engagement platform.
+              My Guardian combines safety, civic responsibility, and local discovery into
+              a single citizen-first digital platform.
             </p>
           </div>
 
@@ -98,6 +139,39 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* ---------------- Detailed Use Cases ---------------- */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <h2 className="text-2xl font-bold mb-4 text-foreground">
+            How My Guardian Helps in Real-Life Situations
+          </h2>
+
+          <p className="text-muted-foreground mb-4">
+            During emergencies, My Guardian allows users to quickly trigger SOS alerts
+            with location sharing, helping loved ones or responders act faster. This
+            feature is especially useful for women, senior citizens, and solo travelers.
+          </p>
+
+          <p className="text-muted-foreground mb-4">
+            For civic engagement, users can report public issues such as road damage,
+            garbage accumulation, water problems, or safety concerns. These reports help
+            improve transparency and encourage quicker resolutions.
+          </p>
+
+          <p className="text-muted-foreground mb-4">
+            The platform also strengthens local economies by enabling users to discover
+            trusted nearby shops, healthcare services, and essential providers, promoting
+            community-based growth and support.
+          </p>
+
+          <p className="text-muted-foreground">
+            By integrating safety, civic responsibility, and local discovery, My Guardian
+            creates a practical digital ecosystem that benefits individuals, communities,
+            and cities across India.
+          </p>
+        </div>
+      </section>
+
       {/* ---------------- Stats Section ---------------- */}
       <section className="py-16 bg-muted">
         <motion.div
@@ -110,10 +184,10 @@ const Index = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Our Impact Vision
+              Our Vision for Impact
             </h2>
             <p className="text-lg text-muted-foreground">
-              Building towards a safer, smarter, and more connected India
+              Building a safer, smarter, and more connected nation
             </p>
           </div>
 
@@ -153,12 +227,11 @@ const Index = () => {
             Ready to Join the Movement?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Be part of building a safer, smarter India. Download My Guardian when it launches
-            and experience the future of citizen empowerment.
+            Be part of building a safer and smarter India and experience the future of citizen empowerment.
           </p>
 
           <motion.div {...hoverPump} className="inline-block">
-            <a
+            {/*<a
               href="https://forms.gle/BECZ8FJkV2bYZLZR7"
               target="_blank"
               rel="noopener noreferrer"
@@ -166,7 +239,7 @@ const Index = () => {
               <Button size="lg" className="bg-white text-primary hover:bg-white/90">
                 Pre-Register Now
               </Button>
-            </a>
+            </a>*/}
           </motion.div>
         </motion.div>
       </section>

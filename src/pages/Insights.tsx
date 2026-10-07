@@ -1,380 +1,109 @@
-import {
-  BookOpen,
-  Mail,
-  Bell,
-  Calendar,
-  ArrowRight,
-  TrendingUp
-} from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
+import { BookOpen, Bell, Calendar, ArrowRight, TrendingUp, Sparkles, Terminal, Shield } from "lucide-react";
 
-/* Motion configs */
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 }
-};
+const ARTICLES = [
+  {
+    title: "Architecting High-Throughput Weather Ingestion on Microsoft Azure",
+    category: "Cloud Engineering",
+    readTime: "6 min read",
+    date: "Case Technical Review",
+    summary: "How we leveraged serverless Azure Functions and Event Hubs to process sensor telemetry with zero packet drop during meteorological anomalies.",
+    route: "/work/weather-pipeline",
+  },
+  {
+    title: "Automating Clinical QA Pipelines: Lessons from US Healthcare Releases",
+    category: "QA & Automation",
+    readTime: "8 min read",
+    date: "Engineering Note",
+    summary: "Building deterministic test case generation models and regression runners that eliminate manual verification lag in healthcare environments.",
+    route: "/work/healthcare-qa",
+  },
+  {
+    title: "Battery-Conscious Geospatial Telemetry in Flutter Consumer Apps",
+    category: "Mobile Engineering",
+    readTime: "5 min read",
+    date: "Mobile Architecture",
+    summary: "Balancing real-time GPS broadcasting with battery conservation algorithms in our My Guardian flagship safety SuperApp.",
+    route: "/work/my-guardian",
+  },
+  {
+    title: "Computer Vision & Geospatial Clustering in Civic Incident Redressal",
+    category: "AI & GovTech",
+    readTime: "7 min read",
+    date: "AI Engineering",
+    summary: "Preventing municipal backlog saturation through proximity-based deduplication algorithms and automated image defect verification.",
+    route: "/work/civic-operations",
+  },
+];
 
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12
-    }
-  }
-};
-
-const Insights = () => {
-  const blogPosts = [
-    {
-      title: "Building India's Digital Safety Infrastructure",
-      excerpt:
-        "How My Guardian is contributing to the Smart Cities mission and Viksit Bharat 2047 vision through citizen-first technology solutions.",
-      date: "Coming Soon",
-      category: "Technology",
-      readTime: "5 min read"
-    },
-    {
-      title: "Women's Safety in the Digital Age",
-      excerpt:
-        "Exploring how technology can empower women with real-time safety tools and community support systems.",
-      date: "Coming Soon",
-      category: "Safety",
-      readTime: "7 min read"
-    },
-    {
-      title: "Civic Engagement Through Mobile Apps",
-      excerpt:
-        "The role of citizen-first applications in strengthening democracy and improving governance at the grassroots level.",
-      date: "Coming Soon",
-      category: "Civic Tech",
-      readTime: "6 min read"
-    },
-    {
-      title: "Supporting Local Businesses with Technology",
-      excerpt:
-        "How digital platforms can bridge the gap between local service providers and their communities.",
-      date: "Coming Soon",
-      category: "Economy",
-      readTime: "4 min read"
-    }
-  ];
-
-  const newsletterTopics = [
-    "Product development updates and new feature announcements",
-    "Success stories from My Guardian users across India",
-    "Partnership highlights and collaboration updates",
-    "Technology insights and safety tips for citizens",
-    "Government initiatives and policy updates affecting citizen safety",
-    "Community events and civic engagement opportunities"
-  ];
-
-  const updateCategories = [
-    {
-      icon: TrendingUp,
-      title: "Product Updates",
-      description: "Latest features, improvements, and roadmap announcements",
-      updates: [
-        "App development milestones",
-        "New feature releases",
-        "Performance improvements",
-        "User feedback implementations"
-      ]
-    },
-    {
-      icon: Bell,
-      title: "News & Announcements",
-      description: "Important company news and partnership announcements",
-      updates: [
-        "Partnership announcements",
-        "Funding updates",
-        "Team expansions",
-        "Award recognitions"
-      ]
-    },
-    {
-      icon: Calendar,
-      title: "Events & Webinars",
-      description: "Upcoming events, demonstrations, and educational content",
-      updates: [
-        "Product demonstrations",
-        "Safety awareness webinars",
-        "Community meetups",
-        "Conference participations"
-      ]
-    }
-  ];
-
+const Insights: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero */}
-      <section className="gradient-hero py-20 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Insights & Updates
-            </h1>
-            <p className="text-xl text-white/90 mb-8">
-              Stay informed with the latest developments, insights, and updates
-              from My Guardian. Discover how we're building a safer, smarter
-              India together.
-            </p>
-
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90"
-              asChild
-            >
-              <a
-                href="https://forms.gle/PqCq457P8JqJxFd18"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Subscribe to Updates
-              </a>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Blog */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Blog</h2>
-              <p className="text-muted-foreground">
-                Insights on technology, safety, and civic engagement
-              </p>
-            </div>
-            <BookOpen className="w-12 h-12 text-primary" />
+    <div className="min-h-screen bg-[#060913] text-slate-100 py-16 sm:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        {/* Header */}
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-4">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>ENGINEERING INSIGHTS & CHANGELOG</span>
           </div>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            {blogPosts.map((post, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card
-                  className="
-                    transition-all duration-300
-                    hover:-translate-y-2 hover:scale-[1.03]
-                    hover:shadow-xl hover:shadow-primary/20
-                  "
-                >
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="outline">{post.category}</Badge>
-                      <span className="text-sm text-muted-foreground">
-                        {post.readTime}
-                      </span>
-                    </div>
-                    <CardTitle className="text-xl hover:text-primary transition-colors cursor-pointer">
-                      {post.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">
-                        {post.date}
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-primary hover:text-primary-dark"
-                      >
-                        Read More <ArrowRight className="w-4 h-4 ml-1" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+            Technical Insights & Architectural Notes
+          </h1>
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Read practical engineering breakdowns, architectural decisions, and product updates from the My Guardian Technologies team.
+          </p>
         </div>
-      </section>
 
-      {/* Newsletter */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="flex items-center justify-between mb-12">
+        {/* Article Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {ARTICLES.map((article, idx) => (
+            <Link
+              key={idx}
+              to={article.route}
+              className="group p-6 sm:p-8 rounded-2xl bg-[#090e1a] border border-slate-800 hover:border-blue-500/40 transition-all flex flex-col justify-between"
+            >
               <div>
-                <h2 className="text-3xl font-bold mb-2">Newsletter</h2>
-                <p className="text-muted-foreground">
-                  Regular updates delivered to your inbox
+                <div className="flex items-center justify-between text-xs font-mono mb-3">
+                  <span className="text-blue-400 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
+                    {article.category}
+                  </span>
+                  <span className="text-slate-500">{article.readTime}</span>
+                </div>
+
+                <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors mb-2">
+                  {article.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+                  {article.summary}
                 </p>
               </div>
-              <Mail className="w-12 h-12 text-secondary" />
-            </div>
 
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle>What You'll Receive</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {newsletterTopics.map((topic, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <span className="text-secondary mt-1">•</span>
-                      <span className="text-muted-foreground">{topic}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="
-                gradient-primary text-white
-                transition-all duration-300
-                hover:-translate-y-2 hover:scale-[1.02]
-                hover:shadow-xl
-              "
-            >
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Subscribe to Our Newsletter
-                </h3>
-                <p className="text-white/90 mb-6">
-                  Be the first to know about product updates, partnership
-                  announcements, and insights from the My Guardian team.
-                </p>
-
-                <Button
-                  size="lg"
-                  className="bg-white text-primary hover:bg-white/90"
-                  asChild
-                >
-                  <a
-                    href="https://forms.gle/PqCq457P8JqJxFd18"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Subscribe Now
-                  </a>
-                </Button>
-
-                <p className="text-sm text-white/70 mt-4">
-                  Coming soon! Newsletter signup will be available shortly.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+              <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-blue-400">
+                <span>Read Architectural Case</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
         </div>
-      </section>
 
-      {/* Updates */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Updates</h2>
-              <p className="text-muted-foreground">
-                Stay current with the latest developments
-              </p>
-            </div>
-            <Bell className="w-12 h-12 text-accent" />
-          </div>
-
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
+        {/* Newsletter / Direct Updates */}
+        <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-r from-blue-950/30 to-slate-900 border border-slate-800 text-center max-w-2xl mx-auto">
+          <BookOpen className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+          <h3 className="text-xl font-bold text-white mb-2">Stay Connected with Our Engineering Team</h3>
+          <p className="text-xs sm:text-sm text-slate-400 mb-6 leading-relaxed">
+            For questions about our open architecture patterns or to discuss a technical collaboration, reach out to our team directly.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs sm:text-sm transition-all shadow-lg"
           >
-            {updateCategories.map((category, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card
-                  className="
-                    transition-all duration-300
-                    hover:-translate-y-2 hover:scale-[1.03]
-                    hover:shadow-xl hover:shadow-primary/20
-                  "
-                >
-                  <CardHeader>
-                    <category.icon className="w-10 h-10 text-primary mb-2" />
-                    <CardTitle>{category.title}</CardTitle>
-                    <p className="text-muted-foreground text-sm">
-                      {category.description}
-                    </p>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {category.updates.map((update, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start space-x-2 text-sm"
-                        >
-                          <span className="text-primary mt-1">•</span>
-                          <span className="text-muted-foreground">
-                            {update}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+            <span>Connect With Us</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">Stay Connected</h2>
-            <p className="text-lg text-white/90 mb-8">
-              Don't miss out on important updates about My Guardian's journey.
-              Subscribe and be part of the conversation.
-            </p>
-
-            <a
-              href="https://www.instagram.com/my_guardian_?igsh=MWlmMTllNjZxOWZpNg=="
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white bg-transparent hover:bg-white hover:text-primary"
-              >
-                Follow Our Journey
-              </Button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 };

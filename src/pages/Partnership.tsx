@@ -1,326 +1,145 @@
-import { Handshake, Building, Heart, Hospital, Leaf } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Handshake, Building, Heart, Hospital, Leaf, ArrowRight, CheckCircle2, Shield, Landmark } from "lucide-react";
 
-/* Animation configs */
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
+const CATEGORIES = [
+  {
+    icon: Landmark,
+    title: "Government & Smart Cities",
+    desc: "Collaborating with municipal corporations, smart-city missions, and emergency services (112).",
+    points: [
+      "Municipal grievance redressal system integration",
+      "Smart city IoT & sensor data sharing",
+      "Public safety and emergency coordination infrastructure",
+      "Digital governance workflow support",
+    ],
   },
-};
+  {
+    icon: Hospital,
+    title: "Healthcare & Emergency Response",
+    desc: "Connecting hospitals, ambulance dispatch networks, and clinical providers for fast response.",
+    points: [
+      "Immediate emergency medical routing",
+      "Direct ambulance dispatch integration",
+      "Emergency medical information access",
+      "Healthcare technology compliance assurance",
+    ],
+  },
+  {
+    icon: Building,
+    title: "Insurance & Risk Assessment",
+    desc: "Partnering with life, general, and health insurers to provide comprehensive safety coverage.",
+    points: [
+      "Emergency response protection plans",
+      "Safety premium discounts for verified users",
+      "Quick claims verification through app telemetry",
+      "Risk assessment analytics for communities",
+    ],
+  },
+  {
+    icon: Heart,
+    title: "NGOs & Community Networks",
+    desc: "Collaborating with grassroots non-profits to protect women, children, and elderly citizens.",
+    points: [
+      "Volunteer coordination for emergency relief",
+      "Women's safety awareness initiatives",
+      "Grassroots community outreach programs",
+      "Senior citizen welfare programs",
+    ],
+  },
+  {
+    icon: Leaf,
+    title: "Swachh Bharat & Sanitation",
+    desc: "Empowering clean living initiatives through transparent GPS-tagged civic issue reporting.",
+    points: [
+      "Public waste management complaint routing",
+      "Community cleanliness drives",
+      "Environmental monitoring and hazard reporting",
+      "Sustainable development tracking",
+    ],
+  },
+];
 
-const Partnership = () => {
-  const partnershipCategories = [
-    {
-      icon: Heart,
-      title: "NGO Partnerships",
-      description: "Collaborating with non-governmental organizations to amplify social impact",
-      benefits: [
-        "Volunteer coordination for emergency response",
-        "Community outreach programs",
-        "Social welfare initiatives",
-        "Skill development programs",
-        "Awareness campaigns for safety and civic responsibility"
-      ],
-      examples: [
-        "Women safety organizations",
-        "Child welfare NGOs",
-        "Elderly care foundations",
-        "Disaster relief organizations"
-      ]
-    },
-    {
-      icon: Building,
-      title: "Insurance Sector",
-      description: "Partnering with insurance companies to provide comprehensive coverage",
-      benefits: [
-        "Emergency response insurance coverage",
-        "Health and safety premium discounts",
-        "Quick claim processing through app integration",
-        "Risk assessment based on safety data",
-        "Family protection plans"
-      ],
-      examples: [
-        "Life insurance companies",
-        "Health insurance providers",
-        "General insurance firms",
-        "Micro-insurance organizations"
-      ]
-    },
-    {
-      icon: Building,
-      title: "Government Collaboration",
-      description: "Working with government bodies to strengthen public safety infrastructure",
-      benefits: [
-        "Integration with 112 emergency services",
-        "Municipal complaint system integration",
-        "Smart city initiative participation",
-        "Public safety data sharing",
-        "Digital governance support"
-      ],
-      examples: [
-        "State police departments",
-        "Municipal corporations",
-        "Emergency services (112)",
-        "Smart city missions"
-      ]
-    },
-    {
-      icon: Hospital,
-      title: "Medical Sector",
-      description: "Connecting with healthcare providers for immediate medical assistance",
-      benefits: [
-        "Direct hospital integration for emergencies",
-        "Ambulance service partnerships",
-        "Telemedicine consultations",
-        "Health record management",
-        "Preventive healthcare programs"
-      ],
-      examples: [
-        "Multi-specialty hospitals",
-        "Emergency medical services",
-        "Diagnostic centers",
-        "Pharmaceutical companies"
-      ]
-    },
-    {
-      icon: Leaf,
-      title: "Swachh Bharat Initiative",
-      description: "Supporting Clean India Mission through technology and community engagement",
-      benefits: [
-        "Waste management complaint system",
-        "Environmental monitoring",
-        "Community cleanliness drives",
-        "Green initiative tracking",
-        "Sustainable development goals"
-      ],
-      examples: [
-        "Municipal waste management",
-        "Environmental NGOs",
-        "Green technology companies",
-        "Sustainable development organizations"
-      ]
-    }
-  ];
-
+const Partnership: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="gradient-hero py-20 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <Handshake className="w-16 h-16 mx-auto mb-6" />
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Partnership Opportunities
-            </h1>
-            <p className="text-xl text-white/90 mb-8">
-              Join hands with My Guardian to build a safer, smarter India. Together, we can create
-              a comprehensive ecosystem that serves every citizen's safety and civic needs.
-            </p>
+    <div className="min-h-screen bg-[#060913] text-slate-100 py-16 sm:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        {/* Header */}
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-4">
+            <Handshake className="w-3.5 h-3.5" />
+            <span>INSTITUTIONAL COLLABORATION & PARTNERSHIPS</span>
+          </div>
 
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-              <a
-                href="https://forms.gle/jD5K69BpBmkGqqCn7"
-                target="_blank"
-                rel="noopener noreferrer"
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+            Partner With My Guardian Technologies
+          </h1>
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
+            We collaborate with civic authorities, healthcare providers, NGOs, and enterprise institutions to build a safer, smarter, and more accountable digital ecosystem.
+          </p>
+
+          <a
+            href="mailto:myguardian2601@gmail.com?subject=Partnership%20Inquiry%20-%20My%20Guardian"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-600/30"
+          >
+            <span>Discuss Institutional Partnership</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        {/* Partnership Categories */}
+        <div className="space-y-6 mb-16">
+          {CATEGORIES.map((cat, idx) => {
+            const Icon = cat.icon;
+            return (
+              <div
+                key={idx}
+                className="p-6 sm:p-8 rounded-2xl bg-[#090e1a] border border-slate-800 hover:border-slate-700 transition-colors"
               >
-                Become a Partner
-              </a>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Partnership Categories */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-            Partnership Categories
-          </h2>
-
-          <motion.div
-            className="space-y-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            {partnershipCategories.map((category, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card
-                  className="
-                    transition-all duration-300 ease-out
-                    hover:-translate-y-2 hover:scale-[1.02]
-                    hover:shadow-xl hover:shadow-primary/20
-                  "
-                >
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <category.icon className="w-12 h-12 text-primary" />
-                      <div>
-                        <CardTitle className="text-2xl">
-                          {category.title}
-                        </CardTitle>
-                        <p className="text-muted-foreground mt-2">
-                          {category.description}
-                        </p>
-                      </div>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      <Icon className="w-6 h-6" />
                     </div>
-                  </CardHeader>
-
-                  <CardContent>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">
-                          Partnership Benefits
-                        </h4>
-                        <ul className="space-y-2">
-                          {category.benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-start space-x-2 text-sm">
-                              <span className="text-secondary mt-1">•</span>
-                              <span className="text-muted-foreground">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">
-                          Potential Partners
-                        </h4>
-                        <ul className="space-y-2">
-                          {category.examples.map((example, idx) => (
-                            <li key={idx} className="flex items-start space-x-2 text-sm">
-                              <span className="text-accent mt-1">•</span>
-                              <span className="text-muted-foreground">{example}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{cat.title}</h3>
+                      <p className="text-xs sm:text-sm text-slate-400">{cat.desc}</p>
                     </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-4 border-t border-slate-800/80 font-mono text-xs text-slate-300">
+                  {cat.points.map((pt, pIdx) => (
+                    <div key={pIdx} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </section>
 
-      {/* Why Partner With Us */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-            Why Partner With My Guardian?
-          </h2>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            {[
-              {
-                title: "Nationwide Reach",
-                description: "Access to millions of users across urban and rural India",
-                icon: "🌍"
-              },
-              {
-                title: "Technology Leadership",
-                description: "AI-powered platform with cutting-edge safety and civic solutions",
-                icon: "🚀"
-              },
-              {
-                title: "Social Impact",
-                description: "Contribute to India's Smart Cities and Viksit Bharat 2047 vision",
-                icon: "💫"
-              },
-              {
-                title: "Data Insights",
-                description: "Valuable analytics for better service delivery and planning",
-                icon: "📊"
-              },
-              {
-                title: "Brand Association",
-                description: "Align with a trusted platform focused on citizen welfare",
-                icon: "🤝"
-              },
-              {
-                title: "Innovation Together",
-                description: "Co-create solutions that address real-world challenges",
-                icon: "💡"
-              }
-            ].map((benefit, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card
-                  className="
-                    text-center
-                    transition-all duration-300 ease-out
-                    hover:-translate-y-2 hover:scale-[1.05]
-                    hover:shadow-xl hover:shadow-primary/25
-                  "
-                >
-                  <CardContent className="p-6">
-                    <div className="text-4xl mb-4">{benefit.icon}</div>
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">
-              Ready to Partner With Us?
-            </h2>
-            <p className="text-lg text-white/90 mb-8">
-              We're open to support, funding, and collaboration with individuals,
-              investors, civic bodies, and institutions who share our vision.
+        {/* Bottom CTA */}
+        <div className="p-8 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-1">
+              Have a collaborative proposal?
+            </h3>
+            <p className="text-sm text-slate-400">
+              Reach our leadership directly at <span className="text-blue-400 font-mono">myguardian2601@gmail.com</span>
             </p>
-
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-              <a
-                href="mailto:myguardian2601@gmail.com?subject=Partnership%20Inquiry%20-%20My%20Guardian"
-              >
-                Contact Partnership Team
-              </a>
-            </Button>
-          </motion.div>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shrink-0"
+          >
+            <span>Contact Partnership Desk</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

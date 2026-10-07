@@ -1,219 +1,159 @@
-import { Target, Eye, Heart, Users, Shield, Lightbulb } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Target, Eye, Heart, Users, Shield, Lightbulb, ArrowRight, CheckCircle2, Terminal, Code2, Cpu } from "lucide-react";
+import { AppStoreBadges } from "@/components/AppStoreBadges";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const About = () => {
+const About: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="gradient-hero py-20 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">About Us</h1>
-            <p className="text-xl text-white/90">
-              Technology should serve humanity, not just convenience.
-              <br />
-              My Guardian is building the future of citizen safety and governance in India.
+    <div className="min-h-screen bg-[#060913] text-slate-100 py-16 sm:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        {/* Header */}
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-4">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>ABOUT MY GUARDIAN TECHNOLOGIES</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
+            Engineering digital products with the mindset of a product company.
+          </h1>
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            "Technology should serve humanity, not just convenience."
+            <br />
+            We are a team of young engineers who believe good software isn't about using the most buzzwords. It's about solving the right problem with the right architecture.
+          </p>
+        </div>
+
+        {/* Dual Core: Products + Services */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="p-8 rounded-2xl bg-[#090e1a] border border-blue-500/30">
+            <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+              <Shield className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Our Proprietary Products</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+              We architect and operate our own live platforms, led by <strong>My Guardian</strong>, our civic safety SuperApp empowering citizens across India with live SOS telemetry, anonymous grievance filing, and neighborhood commerce.
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Story */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-3xl font-bold text-center mb-12">Our Story</h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-              <p className="text-lg leading-relaxed mb-6">
-                In a world where personal safety, community growth, and sustainability are critical, 
-                <strong className="text-foreground"> My Guardian</strong> was born out of a simple yet powerful belief: 
-                "Technology should serve humanity, not just convenience."
-              </p>
-              <p className="text-lg leading-relaxed mb-6">
-                Founded by two visionary engineers from a region with limited tech access, My Guardian 
-                started with the mission of safeguarding women, children, and elders through an affordable, 
-                intelligent wearable device and an intuitive mobile app.
-              </p>
-              <p className="text-lg leading-relaxed mb-6">
-                But what started as a safety product quickly evolved into a transformative idea - a 
-                <strong className="text-foreground"> SuperApp built for India</strong>, addressing urgent needs: 
-                emergency response, local business empowerment, sustainable environment, and accessible healthcare.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Now, My Guardian is on a path to become the 
-                <strong className="text-primary"> Digital Backbone of India's Smart Cities</strong>.
-              </p>
+            <div className="pt-2">
+              <AppStoreBadges variant="compact" />
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
 
-      {/* Mission, Vision, Goals */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            {[
-              {
-                icon: Target,
-                title: "Mission",
-                text:
-                  "To build a safer, smarter India through AI-powered technology that empowers every citizen.",
-                color: "text-primary",
-              },
-              {
-                icon: Eye,
-                title: "Vision",
-                text:
-                  "To become the technology backbone of India’s Smart Cities and digital governance ecosystem.",
-                color: "text-secondary",
-              },
-              {
-                icon: Lightbulb,
-                title: "Goals",
-                text:
-                  "To support Viksit Bharat 2047 by delivering scalable, citizen-first solutions nationwide.",
-                color: "text-accent",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeUp}
-                transition={{ duration: 0.5 }}
-              >
-                <Card
-                  className="
-                    group text-center
-                    transition-all duration-300 ease-out
-                    hover:-translate-y-2 hover:scale-[1.03]
-                    hover:shadow-xl hover:shadow-primary/20
-                  "
-                >
-                  <CardContent className="p-8">
-                    <item.icon
-                      className={`w-12 h-12 mx-auto mb-4 ${item.color}
-                      transition-transform duration-300 group-hover:scale-110`}
-                    />
-                    <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.text}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Core Values</h2>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            {[
-              { icon: Shield, title: "Safety First", desc: "Protecting lives through technology" },
-              { icon: Users, title: "Inclusivity", desc: "Built for every Indian citizen" },
-              { icon: Heart, title: "Sustainability", desc: "Encouraging responsible living" },
-              { icon: Lightbulb, title: "Innovation", desc: "Ethical AI and smart systems" },
-              { icon: Users, title: "Community", desc: "Empowering MSMEs & local governance" },
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                variants={fadeUp}
-                transition={{ duration: 0.4 }}
-              >
-                <Card
-                  className="
-                    group text-center
-                    transition-all duration-300 ease-out
-                    hover:-translate-y-2 hover:scale-[1.05]
-                    hover:shadow-xl hover:shadow-primary/25
-                  "
-                >
-                  <CardContent className="p-6">
-                    <value.icon
-                      className="
-                        w-10 h-10 text-primary mx-auto mb-3
-                        transition-transform duration-300
-                        group-hover:scale-110 group-hover:rotate-3
-                      "
-                    />
-                    <h4 className="font-semibold mb-2">{value.title}</h4>
-                    <p className="text-sm text-muted-foreground">{value.desc}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Vision 2030 */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-8">Vision 2030</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-              <div className="space-y-3">
-                <p>• Safety wearables in every Indian household</p>
-                <p>• Digitally empowered towns and villages</p>
-                <p>• Clean, green, and safe living platforms</p>
-              </div>
-              <div className="space-y-3">
-                <p>• Strong government & NGO collaborations</p>
-                <p>• Full-stack Smart City framework</p>
-                <p>• Active contribution to Viksit Bharat 2047</p>
-              </div>
+          <div className="p-8 rounded-2xl bg-[#090e1a] border border-emerald-500/30">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+              <Code2 className="w-5 h-5" />
             </div>
-          </motion.div>
+            <h3 className="text-xl font-bold text-white mb-2">Client Engineering Services</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+              We bring our production-tested product standards directly to startups, businesses, and enterprises needing custom AI workflows, scalable cloud data pipelines, mobile apps, or industrial SCADA automation.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:underline pt-2"
+            >
+              <span>Discuss Engineering Engagement</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
-      </section>
+
+        {/* Authentic Story Section */}
+        <div className="p-8 sm:p-12 rounded-2xl bg-slate-900/60 border border-slate-800 mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Our Authentic Story</h2>
+          <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p>
+              In a world where personal safety, community growth, and civic transparency are critical, <strong className="text-white">My Guardian Technologies</strong> was born out of a simple yet powerful belief:
+              <em className="text-blue-300 block my-2 font-mono text-sm">"Technology should serve humanity, not just convenience."</em>
+            </p>
+            <p>
+              Founded by two visionary engineers from a region with limited initial tech access, our journey started with the mission of safeguarding women, children, and senior citizens through intelligent software and affordable safety tools.
+            </p>
+            <p>
+              What started as an urgent safety project quickly evolved into a dual-engine technology company:
+            </p>
+            <ul className="space-y-2 font-mono text-xs sm:text-sm text-slate-300 pl-4 border-l-2 border-blue-500 my-4">
+              <li>1. A <strong>Flagship SuperApp</strong> uniting emergency SOS, Swachh Bharat civic reporting, and local business support.</li>
+              <li>2. A <strong>Software Engineering Firm</strong> building cloud architectures (Canada), healthcare QA pipelines (USA), and SCADA automations for global businesses.</li>
+            </ul>
+            <p>
+              We don't inflate our background or invent fictional corporate pedigrees. We let our working systems, verified architectures, and relentless engineering commitment speak for themselves.
+            </p>
+          </div>
+        </div>
+
+        {/* Mission, Vision, Principles */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="p-6 rounded-2xl bg-[#090e1a] border border-slate-800">
+            <Target className="w-8 h-8 text-blue-400 mb-3" />
+            <h3 className="text-lg font-bold text-white mb-2">Our Mission</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              To engineer dependable, high-impact technology solutions, from civic infrastructure to enterprise software, that solve tangible problems without unnecessary overhead.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[#090e1a] border border-slate-800">
+            <Eye className="w-8 h-8 text-cyan-400 mb-3" />
+            <h3 className="text-lg font-bold text-white mb-2">Our Vision</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              To be recognized as a world-class engineering partner and product powerhouse trusted by startups, enterprises, and civic institutions globally.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-[#090e1a] border border-slate-800">
+            <Cpu className="w-8 h-8 text-emerald-400 mb-3" />
+            <h3 className="text-lg font-bold text-white mb-2">Engineering Standard</h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Zero fluff. Deterministic architecture. Typed, maintainable code. Continuous delivery with real observability and SLA accountability.
+            </p>
+          </div>
+        </div>
+
+        {/* Core Values */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">Core Engineering Values</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 text-center">
+              <Shield className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+              <div className="text-sm font-bold text-white">Integrity First</div>
+              <div className="text-[11px] text-slate-400 mt-1">Honest capability, zero fake metrics.</div>
+            </div>
+            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 text-center">
+              <Terminal className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
+              <div className="text-sm font-bold text-white">Problem-Driven</div>
+              <div className="text-[11px] text-slate-400 mt-1">Tech follows the constraint.</div>
+            </div>
+            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 text-center">
+              <Users className="w-6 h-6 text-sky-400 mx-auto mb-2" />
+              <div className="text-sm font-bold text-white">Human Impact</div>
+              <div className="text-[11px] text-slate-400 mt-1">Software that protects and empowers.</div>
+            </div>
+            <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 text-center">
+              <Lightbulb className="w-6 h-6 text-amber-400 mx-auto mb-2" />
+              <div className="text-sm font-bold text-white">Cost-Conscious</div>
+              <div className="text-[11px] text-slate-400 mt-1">Enterprise rigor, zero bloat.</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="p-8 rounded-2xl bg-gradient-to-r from-blue-950/40 via-slate-900 to-indigo-950/30 border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-1">
+              Want to collaborate with our engineering team?
+            </h3>
+            <p className="text-sm text-slate-400">
+              Tell us about your technical goals. We're ready to engineer.
+            </p>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shrink-0"
+          >
+            <span>Start a Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,57 +1,79 @@
-import { Shield, Smartphone, Users, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import heroBanner from "@/assets/hero-banner.jpg";
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Shield, Sparkles, CheckCircle2, ChevronRight, Terminal } from "lucide-react";
+import { EngineeringCoreVisual } from "./EngineeringCoreVisual";
+import { AppStoreBadges } from "./AppStoreBadges";
 
-
-const Hero = () => {
+export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBanner}
-          alt="My Guardian Hero"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/70"></div>
-      </div>
+    <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28 border-b border-slate-800/80 bg-grid-tech">
+      {/* Subtle radial lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-blue-600/10 via-cyan-500/5 to-transparent blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Building a Safer, <br />
-              <span className="text-accent">Smarter India</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Positioning & Conversion Copy */}
+          <div className="lg:col-span-6 space-y-6 text-left">
+            {/* Top Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 shadow-inner">
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-slate-300">
+                PRODUCT COMPANY + ENGINEERING PARTNER
+              </span>
+            </div>
+
+            {/* Primary Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+              Whatever You're Building,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">
+                We Engineer It.
+              </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl">
-              My Guardian is a citizen-first SuperApp empowering every Indian with 
-              AI-powered safety, civic engagement, and local commerce solutions.
+
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+              AI, cloud architectures, mobile & web applications, automation pipelines, and enterprise software. <strong>My Guardian Technologies</strong> builds practical, production-ready technology solutions for businesses of every size.
             </p>
-          </div>
-          
-          <div className="animate-slide-up flex flex-col sm:flex-row gap-4 mb-12">
-            {/*<Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4">
-              Download App
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary">
-              Learn More
-            </Button>*/}
+
+            {/* One Team End-to-End Value Prop */}
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 max-w-xl font-mono text-[11px] text-slate-300">
+              <div className="text-[10px] text-blue-400 uppercase tracking-wider font-bold mb-1.5 flex items-center gap-1.5">
+                <Terminal className="w-3 h-3" />
+                <span>ONE TEAM. END-TO-END ENGINEERING.</span>
+              </div>
+              <div className="text-slate-400 leading-normal">
+                Discovery → Architecture → Development → AI / Cloud → Testing → Deployment → SLA Support
+              </div>
+            </div>
+
+            {/* Primary CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+
+              <a
+                href="#selected-work"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white font-medium text-sm transition-all"
+              >
+                <span>Explore Selected Work</span>
+              </a>
+            </div>
+
+            {/* Flagship App Quick Badge */}
+            <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-3 text-xs text-slate-400">
+              <span className="font-mono text-[11px] text-slate-400">Our Flagship App:</span>
+              <AppStoreBadges variant="compact" />
+            </div>
           </div>
 
-          {/* Feature Highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-slide-up">
-            {[
-              { icon: Shield, title: "SOS Emergency", desc: "Instant alerts" },
-              { icon: Users, title: "Civic Engagement", desc: "Complaints Submission" },
-              { icon: Smartphone, title: "Local Commerce", desc: "Support MSMEs" },
-              { icon: Zap, title: "Smart Cities", desc: "Digital backbone" }
-            ].map((feature, index) => (
-              <div key={index} className="text-center text-white">
-                <feature.icon className="w-8 h-8 mx-auto mb-2 text-accent" />
-                <h3 className="font-semibold text-sm">{feature.title}</h3>
-                <p className="text-xs text-white/70">{feature.desc}</p>
-              </div>
-            ))}
+          {/* Right Column: Hero Visual - Central Engineering Core */}
+          <div className="lg:col-span-6 w-full">
+            <EngineeringCoreVisual />
           </div>
         </div>
       </div>
